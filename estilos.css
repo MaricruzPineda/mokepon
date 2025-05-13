@@ -1,0 +1,270 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', monospace;
+    background-color: #1a1a2e;
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #16213e;
+    border-radius: 10px;
+}
+
+/* Typography */
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4ecdc4;
+}
+
+.title-emoji {
+    font-size: 32px;
+    text-align: center;
+    margin-top: 10px;
+}
+/* Mascota Selection Section */
+.mascota-opciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.mascota-card {
+    background-color: #3a3163;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #4ab3dd;
+}
+.mascota-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.mascota-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+input[type="radio"] {
+    display: none; /* Ocultamos los radios */
+}
+.mascota-activa {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mascota-activa img {
+    width: 120px;
+    height: auto;
+    animation: flotar 1.2s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Cuando el radio está seleccionado, se aplica animación */
+input[type="radio"]:checked + label .mascota-img {
+    animation: sacudir 0.8s infinite alternate;
+    border: 3px solid #4ecdc4;
+}
+/* animaciones */
+@keyframes sacudir {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+.sacudida {
+  animation: sacudir 0.4s;
+}
+.zona-batalla {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.lado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Aumenta o reduce para más o menos espacio */
+}
+
+
+/* .lado img {
+    width: 100px;
+    animation: flotar 1.5s ease-in-out infinite;
+} */
+
+
+.mascota-contenedor img {
+    width: 120px;
+    animation: flotar 1.5s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.jugador-label,
+.enemigo-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    color: #c77dff; /* lila */
+    animation: parpadeo 1s infinite;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+.nombre-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    color: #c77dff; /* lila/morado */
+    animation: parpadeo 1s infinite;
+    margin-bottom: 10px;
+}
+
+
+/* Botonessss*/
+.btn-primary {
+    font-family: 'Press Start 2P', monospace;
+    background-color: #4ecdc4;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.btn-ataque {
+    background-color: #233049;
+    border: 2px solid #4ecdc4;
+    padding: 15px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+}
+.botones-ataque {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    font-family: 'Press Start 2P', monospace;
+}
+.estado-juego {
+    background-color: #233049;
+    padding: 18px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+
+.vidas {
+    color: #ff6b6b;
+    font-weight: bold;
+    font-size: 18px;
+}
+.resultado-final {
+    background-color: #111;
+    color: #4ecdc4;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    border: 3px dashed #4ecdc4;
+    border-radius: 12px;
+    margin-top: 30px;
+    animation: aparecer 1s ease-in-out;
+}
+
+@keyframes aparecer {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+/* Estilos del resultado */
+.resultado {
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* GANASTE - Letras saltando */
+.ganaste {
+    color: #00ff00;
+    animation: saltar 0.6s ease infinite alternate;
+}
+
+@keyframes saltar {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+/* PERDISTE - Letras rompiéndose (efecto temblor) */
+.perdiste {
+    color: #ff3b3b;
+    animation: romper 0.3s ease infinite;
+}
+
+@keyframes romper {
+    0% { transform: translate(0); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-1px, 1px); }
+    100% { transform: translate(0); }
+}
+
+/* EMPATE - Vibración luminosa */
+.empate {
+    color: #ffd700; /* Amarillo dorado */
+    animation: parpadeo 0.8s ease-in-out infinite;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+
