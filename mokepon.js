@@ -6,6 +6,8 @@ let juegoTerminado = false;
 
 // Función para iniciar el juego
 function iniciarJuego() {
+    //conectarse al servidor
+    unirseAlJuego();
     let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque');
     // Ocultar la sección de seleccionar ataque
     sectionSeleccionarAtaque.style.display = 'none'; 
@@ -26,6 +28,23 @@ function iniciarJuego() {
     let botonReiniciar = document.getElementById('boton-reiniciar');
     // Al dar click en el botón reiniciar el juego
     botonReiniciar.addEventListener('click', reiniciarJuego); 
+}
+// Nueva función para conectarse al servidor
+function unirseAlJuego() {
+    fetch("http://localhost:8080/unirse")  // <-- IMPORTANTE: incluye http://
+    .then(function (res) {
+        if (res.ok) {
+            res.text()
+            .then(function (respuesta) {
+                console.log("ID recibido del servidor:", respuesta);
+            });
+        } else {
+            console.error("Error en la respuesta del servidor");
+        }
+    })
+    .catch(function (error) {
+        console.error("Error en la petición fetch:", error);
+    });
 }
 
 // Función para que el jugador seleccione una mascota
